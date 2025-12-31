@@ -524,6 +524,9 @@ section {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(99, 102, 241, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -537,6 +540,7 @@ section {
   width: 100%;
   height: 250px;
   overflow: hidden;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
 }
 
 .project-image img {
@@ -544,6 +548,9 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover .project-image img {
@@ -599,6 +606,9 @@ section {
 
 .project-content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-content h3 {
@@ -611,12 +621,14 @@ section {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .tech-tag {
@@ -626,6 +638,34 @@ section {
   border-radius: 15px;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.btn-project-netlify {
+  padding: 10px 20px;
+  background: var(--gradient);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-project-netlify:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
 }
 
 .no-projects {

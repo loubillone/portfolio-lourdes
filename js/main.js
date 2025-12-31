@@ -74,7 +74,7 @@ function loadProjects(filter = 'all') {
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
             <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${project.title}" onerror="this.onerror=null; this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)';">
                 <div class="project-overlay">
                     <a href="${project.netlifyUrl}" 
                        target="_blank" 
@@ -84,16 +84,6 @@ function loadProjects(filter = 'all') {
                         <i class="fas fa-external-link-alt"></i>
                         Ver Proyecto
                     </a>
-                    ${project.githubUrl ? `
-                    <a href="${project.githubUrl}" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="project-link github"
-                       title="Ver código en GitHub">
-                        <i class="fab fa-github"></i>
-                        Código
-                    </a>
-                    ` : ''}
                 </div>
             </div>
             <div class="project-content">
@@ -103,6 +93,16 @@ function loadProjects(filter = 'all') {
                     ${project.technologies.map(tech => 
                         `<span class="tech-tag">${tech}</span>`
                     ).join('')}
+                </div>
+                <div class="project-buttons">
+                    <a href="${project.netlifyUrl}" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="btn-project-netlify"
+                       title="Ver proyecto">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ver Proyecto
+                    </a>
                 </div>
             </div>
         `;
