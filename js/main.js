@@ -74,17 +74,7 @@ function loadProjects(filter = 'all') {
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
             <div class="project-image">
-                <img src="${project.image}" alt="${project.title}" onerror="this.onerror=null; this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)';">
-                <div class="project-overlay">
-                    <a href="${project.netlifyUrl}" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="project-link"
-                       title="Ver en Netlify">
-                        <i class="fas fa-external-link-alt"></i>
-                        Ver Proyecto
-                    </a>
-                </div>
+                <img src="${project.image}" alt="${project.title}">
             </div>
             <div class="project-content">
                 <h3>${project.title}</h3>
@@ -98,11 +88,21 @@ function loadProjects(filter = 'all') {
                     <a href="${project.netlifyUrl}" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       class="btn-project-netlify"
-                       title="Ver proyecto">
+                       class="project-link"
+                       title="Ver en Netlify">
                         <i class="fas fa-external-link-alt"></i>
                         Ver Proyecto
                     </a>
+                    ${project.githubUrl ? `
+                    <a href="${project.githubUrl}" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="project-link github"
+                       title="Ver código en GitHub">
+                        <i class="fab fa-github"></i>
+                        Código
+                    </a>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -201,25 +201,60 @@ function toggleMenu() {
     }
 }
 
-// Manejar envío del formulario
-function handleSubmit(event) {
+// Manejar envío del formulario con EmailJS
+async function handleSubmit(event) {
     event.preventDefault();
     
     const form = event.target;
-    const formData = new FormData(form);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
-
-    // Aquí puedes agregar la lógica para enviar el formulario
-    // Por ejemplo, usando un servicio como EmailJS o tu propio backend
-    console.log('Formulario enviado:', data);
-    alert('¡Gracias por tu mensaje! Te responderé pronto.');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
     
-    // Limpiar formulario
-    form.reset();
+    // Deshabilitar botón durante el envío
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+    
+    try {
+        // Verificar que EmailJS esté configurado
+        if (typeof EMAILJS_CONFIG === 'undefined' || 
+            EMAILJS_CONFIG.SERVICE_ID === 'YOUR_SERVICE_ID' ||
+            EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_TEMPLATE_ID' ||
+            EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+            throw new Error('EmailJS no está configurado correctamente. Por favor, configura tus credenciales en js/config.js');
+        }
+        
+        // Verificar que EmailJS esté cargado
+        if (typeof emailjs === 'undefined') {
+            throw new Error('EmailJS no está cargado. Verifica que el script esté incluido correctamente.');
+        }
+        
+        // Preparar los parámetros del template
+        const templateParams = {
+            from_name: form.name.value,
+            from_email: form.email.value,
+            message: form.message.value,
+            to_name: 'Lourdes Billone'
+        };
+        
+        // Enviar el email usando EmailJS
+        await emailjs.send(
+            EMAILJS_CONFIG.SERVICE_ID,
+            EMAILJS_CONFIG.TEMPLATE_ID,
+            templateParams,
+            EMAILJS_CONFIG.PUBLIC_KEY
+        );
+        
+        // Éxito
+        alert('¡Mensaje enviado con éxito! Te responderé pronto.');
+        form.reset();
+        
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctame directamente por email.');
+    } finally {
+        // Rehabilitar botón
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+    }
 }
 
 // Cerrar menú móvil al hacer clic en un enlace
