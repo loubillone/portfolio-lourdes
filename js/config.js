@@ -1,7 +1,7 @@
 const EMAILJS_CONFIG = {
-  SERVICE_ID: "service_r302k3h", // Tu Service ID de EmailJS
-  TEMPLATE_ID: "template_4ybxpzi", // Tu Template ID de EmailJS
-  PUBLIC_KEY: "EnvASnlrL_yQGaSoz", // Tu Public Key (User ID) de EmailJS
+  SERVICE_ID: "service_r302k3h",
+  TEMPLATE_ID: "template_4ybxpzi",
+  PUBLIC_KEY: "EnvASnlrL_yQGaSoz",
 };
 
 // Inicializar EmailJS cuando esté disponible
