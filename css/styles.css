@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--dark-bg);
   color: var(--text-primary);
   line-height: 1.6;
@@ -96,7 +96,7 @@ html {
 }
 
 .nav-menu a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -141,18 +141,23 @@ html {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.1) 0%,
+    transparent 70%
+  );
   animation: pulse 15s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.5;
   }
@@ -258,7 +263,7 @@ html {
 }
 
 .code-line {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 1rem;
   line-height: 2;
   color: var(--text-primary);
@@ -299,7 +304,11 @@ html {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   40% {
@@ -364,6 +373,7 @@ section {
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-secondary);
+  text-align: justify;
 }
 
 .about-text p {
@@ -381,7 +391,9 @@ section {
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
@@ -433,7 +445,9 @@ section {
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
@@ -497,7 +511,7 @@ section {
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .filter-btn:hover {
@@ -522,7 +536,9 @@ section {
   background: var(--dark-card);
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid rgba(99, 102, 241, 0.1);
   display: flex;
   flex-direction: column;
@@ -655,7 +671,9 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   width: 100%;
   justify-content: center;
 }
@@ -704,7 +722,9 @@ section {
   border-radius: 15px;
   text-align: center;
   border: 1px solid rgba(99, 102, 241, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .info-card:hover {
@@ -769,7 +789,7 @@ section {
   border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: 8px;
   color: var(--text-primary);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   transition: border-color 0.3s ease;
 }
@@ -853,7 +873,8 @@ section {
 }
 
 @keyframes heartbeat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -870,7 +891,9 @@ section {
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-decoration: none;
   display: inline-block;
 }
@@ -1038,4 +1061,3 @@ section {
     font-size: 1.2rem;
   }
 }
-
