@@ -1,15 +1,15 @@
-// Configuración de EmailJS
-// Reemplaza estos valores con tus credenciales de EmailJS
-// Puedes obtenerlas en: https://www.emailjs.com/
-
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'YOUR_SERVICE_ID',      // Tu Service ID de EmailJS
-  TEMPLATE_ID: 'YOUR_TEMPLATE_ID',     // Tu Template ID de EmailJS
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY'        // Tu Public Key (User ID) de EmailJS
+  SERVICE_ID: "service_r302k3h", // Tu Service ID de EmailJS
+  TEMPLATE_ID: "template_4ybxpzi", // Tu Template ID de EmailJS
+  PUBLIC_KEY: "EnvASnlrL_yQGaSoz", // Tu Public Key (User ID) de EmailJS
 };
 
-// Inicializar EmailJS
-if (typeof emailjs !== 'undefined') {
-  emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-}
-
+// Inicializar EmailJS cuando esté disponible
+(function initializeEmailJS() {
+  if (typeof emailjs !== "undefined") {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  } else {
+    // Si EmailJS aún no está cargado, esperar un poco y reintentar
+    setTimeout(initializeEmailJS, 100);
+  }
+})();
