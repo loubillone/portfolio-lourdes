@@ -462,6 +462,22 @@ section {
   font-size: 4rem;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-icon img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  display: block;
+  margin: 0 auto;
+}
+
+.skill-icon i {
+  display: block;
 }
 
 .skill-card:hover .skill-icon {

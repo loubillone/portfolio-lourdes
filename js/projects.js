@@ -40,6 +40,7 @@ const skills = [
   { name: "CSS3", icon: "fab fa-css3-alt", color: "#264de4" },
   { name: "JavaScript", icon: "fab fa-js", color: "#f7df1e" },
   { name: "React", icon: "fab fa-react", color: "#61dafb" },
+  { name: "Node.js", icon: "fab fa-node-js", color: "#339933" },
   { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952B3" },
   { name: "MongoDB", icon: "fas fa-database", color: "#47A248" },
   { name: "Git", icon: "fab fa-git-alt", color: "#f05032" },

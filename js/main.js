@@ -36,9 +36,15 @@ function loadSkills() {
   skills.forEach((skill) => {
     const skillCard = document.createElement("div");
     skillCard.className = "skill-card";
+
+    // Si tiene imagen, usar imagen; si no, usar icono de Font Awesome
+    const iconContent = skill.image
+      ? `<img src="${skill.image}" alt="${skill.name}" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\\'${skill.icon}\\'></i>'; console.error('Error cargando imagen: ${skill.image}');">`
+      : `<i class="${skill.icon}"></i>`;
+
     skillCard.innerHTML = `
             <div class="skill-icon" style="color: ${skill.color}">
-                <i class="${skill.icon}"></i>
+                ${iconContent}
             </div>
             <h3>${skill.name}</h3>
         `;
@@ -267,7 +273,13 @@ async function handleSubmit(event) {
     );
 
     // Éxito
-    alert("¡Mensaje enviado con éxito! Te responderé pronto.");
+    await Swal.fire({
+      icon: "success",
+      title: "¡Mensaje enviado!",
+      text: "Te responderé pronto.",
+      confirmButtonColor: "#6366f1",
+      confirmButtonText: "OK",
+    });
     form.reset();
   } catch (error) {
     console.error("Error al enviar el formulario:", error);
@@ -276,11 +288,16 @@ async function handleSubmit(event) {
       text: error.text,
       status: error.status,
     });
-    alert(
-      "Hubo un error al enviar el mensaje: " +
+    await Swal.fire({
+      icon: "error",
+      title: "Error al enviar",
+      text:
+        "Hubo un error al enviar el mensaje: " +
         (error.text || error.message || "Error desconocido") +
         ". Por favor, intenta nuevamente o contáctame directamente por email.",
-    );
+      confirmButtonColor: "#6366f1",
+      confirmButtonText: "Entendido",
+    });
   } finally {
     // Rehabilitar botón
     submitButton.disabled = false;
