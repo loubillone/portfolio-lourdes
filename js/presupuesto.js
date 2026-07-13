@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
       errorEl.textContent = "";
       // Cerrar el teclado del celular antes de cambiar la vista.
       input.blur();
+      // Saltar al tope de forma instantánea ANTES de mostrar el
+      // presupuesto, para que no se vea ninguna animación de scroll.
+      ppScrollToTop();
       loginSection.style.display = "none";
       docSection.style.display = "block";
       renderPresupuesto(data);
@@ -61,19 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Fuerza el scroll al tope, incluso en celular donde el teclado y el
-// re-render pueden dejar la página desplazada hacia abajo.
+// Salta al tope SIN animación (esquiva el scroll-behavior: smooth global),
+// para que el presupuesto se abra directamente desde el principio.
 function ppScrollToTop() {
-  const jump = () => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  };
-  jump();
-  // Reintentos tras cerrarse el teclado / reacomodarse el layout.
-  requestAnimationFrame(jump);
-  setTimeout(jump, 60);
-  setTimeout(jump, 200);
+  const html = document.documentElement;
+  const previous = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+  window.scrollTo(0, 0);
+  html.scrollTop = 0;
+  document.body.scrollTop = 0;
+  // Restaurar el smooth scroll del sitio después del salto instantáneo.
+  requestAnimationFrame(() => {
+    html.style.scrollBehavior = previous;
+  });
 }
 
 function renderList(items, className) {
