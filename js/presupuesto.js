@@ -47,10 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (value === data.password) {
       errorEl.textContent = "";
+      // Cerrar el teclado del celular antes de cambiar la vista.
+      input.blur();
       loginSection.style.display = "none";
       docSection.style.display = "block";
       renderPresupuesto(data);
-      window.scrollTo(0, 0);
+      ppScrollToTop();
     } else {
       errorEl.textContent = "Contraseña incorrecta. Intentá nuevamente.";
       input.value = "";
@@ -58,6 +60,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Fuerza el scroll al tope, incluso en celular donde el teclado y el
+// re-render pueden dejar la página desplazada hacia abajo.
+function ppScrollToTop() {
+  const jump = () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+  jump();
+  // Reintentos tras cerrarse el teclado / reacomodarse el layout.
+  requestAnimationFrame(jump);
+  setTimeout(jump, 60);
+  setTimeout(jump, 200);
+}
 
 function renderList(items, className) {
   return `<ul class="${className}">${items
