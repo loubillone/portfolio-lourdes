@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Presupuesto privado - Lourdes Billone Web Developer"
+    />
+    <title>Presupuesto | Lourdes Billone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/presupuesto.css" />
+  </head>
+  <body class="pp-body">
+    <!-- Header (mismo estilo que el sitio) -->
+    <header class="header scrolled" id="header">
+      <nav class="nav-container">
+        <a class="logo" href="../index.html" style="text-decoration: none">
+          <span class="logo-text">LB</span>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="../index.html">Volver al sitio</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Login -->
+    <section class="pp-login" id="ppLogin">
+      <div class="pp-login-card">
+        <div class="pp-login-icon"><i class="fas fa-lock"></i></div>
+        <h1>Presupuesto privado</h1>
+        <p>Ingresá la contraseña que te compartimos para ver tu propuesta.</p>
+        <form class="pp-login-form" id="ppLoginForm">
+          <div class="form-group">
+            <label for="ppPassword">Contraseña</label>
+            <input
+              type="password"
+              id="ppPassword"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-primary">Ver presupuesto</button>
+          <div class="pp-login-error" id="ppLoginError"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Documento (oculto hasta validar) -->
+    <main class="pp-main" id="ppDocument" style="display: none">
+      <div id="ppContent"></div>
+    </main>
+
+    <!-- Footer (mismo estilo que el sitio) -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>
+            &copy; <span id="currentYear"></span> Lourdes Billone. Todos los
+            derechos reservados.
+          </p>
+        </div>
+        <div class="footer-social">
+          <a
+            href="https://github.com/loubillone"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/lourdes-billonear/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:loubillone.develop@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/presupuestos-data.js"></script>
+    <script src="../js/presupuesto.js"></script>
+  </body>
+</html>

@@ -1,0 +1,623 @@
+/* ==========================================================================
+   Presupuestos — estilos aditivos.
+   Reutiliza las variables de :root definidas en styles.css.
+   Todas las clases usan el prefijo pp- para no colisionar con el sitio.
+   ========================================================================== */
+
+/* Layout general de la página de presupuesto */
+.pp-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pp-main {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 20px 80px;
+}
+
+/* --------------------------------------------------------------------------
+   Login
+   -------------------------------------------------------------------------- */
+.pp-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-login::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.1) 0%,
+    transparent 70%
+  );
+  animation: pulse 15s ease-in-out infinite;
+}
+
+.pp-login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  background: var(--dark-card);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.pp-login-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.pp-login-card h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pp-login-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.pp-login-form .form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.pp-login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pp-login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  background: var(--dark-bg);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.pp-login-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.pp-login-form .btn-primary {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.pp-login-error {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  min-height: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Encabezado del documento
+   -------------------------------------------------------------------------- */
+.pp-doc-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.pp-brand {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pp-role {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  letter-spacing: 0.5px;
+}
+
+.pp-date {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 6px 18px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 25px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.pp-eyebrow {
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.pp-project-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --------------------------------------------------------------------------
+   Secciones y bloques
+   -------------------------------------------------------------------------- */
+/* Único ajuste de compactado: espacio ENTRE secciones generales
+   ("Sobre el proyecto", "Objetivo del proyecto", etc.). */
+.pp-section {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pp-section-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pp-section-title::before {
+  content: "";
+  width: 6px;
+  height: 1.4rem;
+  border-radius: 3px;
+  background: var(--gradient);
+}
+
+.pp-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.pp-text p {
+  margin-bottom: 1rem;
+}
+
+/* Tarjeta base (reutiliza el look de .about-card / .project-card) */
+.pp-card {
+  background: var(--dark-card);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.pp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  border-color: var(--primary-color);
+}
+
+/* --------------------------------------------------------------------------
+   Propuestas
+   -------------------------------------------------------------------------- */
+.pp-proposal {
+  margin-bottom: 2.5rem;
+}
+
+.pp-proposal-head {
+  margin-bottom: 1.5rem;
+}
+
+.pp-proposal-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary-color);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.pp-proposal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pp-proposal-desc {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.7;
+}
+
+/* Grid de categorías de funcionalidades */
+.pp-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pp-category {
+  background: var(--dark-bg);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.pp-category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.pp-category-title .pp-cat-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.pp-list {
+  list-style: none;
+}
+
+.pp-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.55rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pp-list li::before {
+  content: "\f00c"; /* fa-check */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+}
+
+/* Bloque genérico de lista dentro de tarjeta (incluye / entregables) */
+.pp-subblock {
+  margin-top: 1.5rem;
+}
+
+.pp-subblock h4 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Tiempo y precio destacado
+   -------------------------------------------------------------------------- */
+.pp-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.pp-time {
+  background: var(--dark-bg);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pp-time .pp-meta-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.pp-time .pp-meta-value {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.pp-price {
+  background: var(--dark-bg);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pp-price .pp-meta-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.pp-price .pp-price-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pp-price .pp-price-note {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Forma de pago / mantenimiento / observaciones
+   -------------------------------------------------------------------------- */
+.pp-ordered {
+  list-style: none;
+  counter-reset: pp-counter;
+}
+
+.pp-ordered li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pp-ordered li::before {
+  counter-increment: pp-counter;
+  content: counter(pp-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: var(--gradient);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pp-maintenance-value {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.25rem;
+  background: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+}
+
+.pp-observations li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  list-style: none;
+}
+
+.pp-observations li::before {
+  content: "\f105"; /* fa-angle-right */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: var(--primary-color);
+}
+
+.pp-validity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 8px 18px;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 25px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Contacto y acciones
+   -------------------------------------------------------------------------- */
+.pp-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.pp-contact-item {
+  background: var(--dark-card);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.pp-contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+  border-color: var(--primary-color);
+}
+
+.pp-contact-icon {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 1rem;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.pp-contact-item span {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.pp-contact-item a,
+.pp-contact-item p {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.pp-contact-item a:hover {
+  color: var(--primary-color);
+}
+
+.pp-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.pp-actions .btn-primary,
+.pp-actions .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+}
+
+.pp-actions .btn-secondary i.fa-whatsapp {
+  font-size: 1.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .pp-main {
+    padding: 100px 16px 60px;
+  }
+
+  .pp-brand {
+    font-size: 2rem;
+  }
+
+  .pp-project-title {
+    font-size: 1.9rem;
+  }
+
+  .pp-section-title {
+    font-size: 1.4rem;
+  }
+
+  .pp-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-price .pp-price-value {
+    font-size: 2rem;
+  }
+
+  .pp-actions {
+    flex-direction: column;
+  }
+
+  .pp-actions .btn-primary,
+  .pp-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pp-login-card {
+    padding: 2rem 1.5rem;
+  }
+}
